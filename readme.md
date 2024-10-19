@@ -13,10 +13,6 @@ TypeScript is a powerful superset of JavaScript that adds optional static typing
 6. Github Actions integrated with downloadable report
 7. Page object model
 
-## Sample report
-![image](https://github.com/ortoniKC/Playwright_Cucumber_TS/assets/58769833/da2d9f5a-85e7-4695-8ce2-3378b692afc4)
-
-
 ## Project structure
 
 - .github -> yml file to execute the tests in GitHub Actions
