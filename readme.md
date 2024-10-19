@@ -14,9 +14,7 @@ TypeScript is a powerful superset of JavaScript that adds optional static typing
 7. Page object model
 
 ## Sample report
-
-![alt text](<Screenshot (369).png>)
-
+![alt text](reportss.png)
 ## Project structure
 
 - .github -> yml file to execute the tests in GitHub Actions
