@@ -13,24 +13,11 @@ TypeScript is a powerful superset of JavaScript that adds optional static typing
 6. Github Actions integrated with downloadable report
 7. Page object model
 
-## Sample report
-![alt text](reportss.png)
 ## Project structure
 
 - .github -> yml file to execute the tests in GitHub Actions
 - src -> Contains all the features & Typescript code
 - test-results -> Contains all the reports related file
-
-## Reports
-
-1. [Mutilple Cucumber Report](https://github.com/WasiqB/multiple-cucumber-html-reporter)
-2. Default Cucumber report
-3. [Logs](https://www.npmjs.com/package/winston)
-4. Screenshots of failure
-5. Test videos of failure
-6. Trace of failure
-
-## Get Started
 
 ### Setup:
 
@@ -61,5 +48,4 @@ npm run test --TAGS="@test or @add"
 7. `src\helper\report` -> To generate the report
 8. `config/cucumber.js` -> One file to do all the magic
 9. `package.json` -> Contains all the dependencies
-10. `src\helper\auth` -> Storage state (Auth file)
-11. `src\helper\util` -> Read test data from json & logger
+10. `src\helper\util` -> Read test data from json & logger

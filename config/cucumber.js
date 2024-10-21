@@ -8,10 +8,11 @@ module.exports = {
         },
         //we have give path to locate our fetaure 
         paths: [
-            "src/test/features/doglus.feature" 
+            "src/test/features/douglas.feature" 
         ],
         //to desable the cloud default report of cucumber
         publishQuiet: true, 
+        timeout: 30000,
         dryRun: false,
         //here we have kept out steps and hooks file path
         require: [
@@ -49,6 +50,6 @@ module.exports = {
             "json:test-results/cucumber-report.json",
             "rerun:@rerun.txt"
         ],
-        parallel: 2
+        parallel: 2,
     }
 }
