@@ -12,7 +12,6 @@ module.exports = {
         ],
         //to desable the cloud default report of cucumber
         publishQuiet: true, 
-        timeout: 30000,
         dryRun: false,
         //here we have kept out steps and hooks file path
         require: [
