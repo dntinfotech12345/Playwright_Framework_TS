@@ -50,24 +50,17 @@ export class DoglusPage {
     }
 
     async getTheFilterTextAndVerify(actualFilterText: string) {
-        // Get the list of elements that match the selector for the filter buttons
-        const filters = await this.page.$$('//button[@class="selected-facets__value"]');
+       // Get the list of elements that match the selector for the filter buttons
+       const filters = await this.page.$$('//button[@class="selected-facets__value"]');
 
-        // Extract the text from each filter button element
-        const filterTexts: string[] = await Promise.all(
-            filters.map(async (filter) => await filter.textContent())
-        );
-
-        // Log all filter texts for debugging
-        fixture.logger.info('Filter Texts:', filterTexts)
-        // Check if the actualFilterText exists in the list of filter texts
-        if (filterTexts.includes(actualFilterText)) {
-            fixture.logger.info(`Filter "${actualFilterText}" found in the list.`)
-            return true;
-        } else {
-            fixture.logger.info(`Filter "${actualFilterText}" NOT found in the list.`)
-            return false;
-        }
+       // Extract the text from each filter button element
+       const filterTexts: string[] = await Promise.all(
+           filters.map(async (filter) => await filter.textContent())
+       );
+   
+       // Ensure that the actualFilterText is in the list of filter texts using Playwright assertions
+       expect(filterTexts).toContain(
+           actualFilterText);
     }
 
 
