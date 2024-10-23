@@ -22,4 +22,25 @@ export default class Assert {
         expect(pageURL).toContain(title);
     }
 
+    async assertElementVisible(locator: string) {
+        const element = this.page.locator(locator);
+        await expect(element).toBeVisible();
+    }
+
+    async assertElementContainsText(locator: string, text: string) {
+        const element = this.page.locator(locator);
+        const elementText = await element.textContent();
+        expect(elementText).toContain(text);
+    }
+
+    async assertElementExists(locator: string) {
+        const element = this.page.locator(locator);
+        await expect(element).toBeTruthy();
+    }
+
+    async assertElementHidden(locator: string) {
+        const element = this.page.locator(locator);
+        await expect(element).toBeHidden();
+    }
+
 }

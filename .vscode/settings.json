@@ -1,4 +1,4 @@
 {
-    "javascript.preferGoToSourceDefinition": false,
-    "typescript.preferGoToSourceDefinition": false
+    "javascript.preferGoToSourceDefinition": true,
+    "typescript.preferGoToSourceDefinition": true
 }
