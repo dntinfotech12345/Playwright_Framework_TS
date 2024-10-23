@@ -1,6 +1,6 @@
 import { Page } from "@playwright/test";
 
-export default class PlaywrightWrapper {
+export class PlaywrightWrapper {
 
     constructor(private page: Page) { }
 

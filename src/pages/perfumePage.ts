@@ -1,5 +1,5 @@
 import { Page, expect } from "@playwright/test";
-import PlaywrightWrapper from "../helper/wrapper/playwrightWrappers";
+import {PlaywrightWrapper} from "../helper/wrapper/playwrightWrappers";
 import { fixture } from "../../src/hooks/pageFixture";
 
 export class PerfumePage {
