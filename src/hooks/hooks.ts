@@ -14,7 +14,7 @@ BeforeAll(async function () {
     getEnv();
     browser = await invokeBrowser();
 });
-// It will trigger for not auth scenarios
+
 Before(async function ({ pickle }) {
     const scenarioName = pickle.name + pickle.id
     context = await browser.newContext({
