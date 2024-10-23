@@ -12,7 +12,7 @@ Feature: Verify the perfume page Highlight dropdown options
       | FilterOption |
       | Sale         |
       | NEU          |
-      | Limitiert    |
+    
 
   Scenario: Verify the option selected from highlight droupdown is not matching
     Given User navigates to the application

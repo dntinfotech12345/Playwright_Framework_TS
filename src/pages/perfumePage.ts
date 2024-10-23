@@ -69,7 +69,7 @@ export class PerfumePage {
     
         // Get total pages from the page info
         const pageInfoText = await this.page.locator(this.Elements.pageInfoLocator).textContent();
-        console.log("pageInfo=====>>"+pageInfoText);
+       
         if (pageInfoText) {
             const match = pageInfoText.match(/Seite (\d+) von (\d+)/);
             if (match) {
