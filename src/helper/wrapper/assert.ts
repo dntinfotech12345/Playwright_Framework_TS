@@ -1,6 +1,6 @@
 import { expect, Page } from "@playwright/test";
 
-export default class Assert {
+export class Assert {
 
     constructor(private page: Page) { }
 

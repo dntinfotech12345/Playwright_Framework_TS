@@ -1,8 +1,8 @@
 import { Page, expect } from "@playwright/test";
 import {PlaywrightWrapper} from "../helper/wrapper/playwrightWrapper";
-import { fixture } from "../../src/hooks/pageFixture";
+import { fixture } from "../hooks/pageFixture";
 
-export class DashboardPage {
+export class HomePage {
 
     private base: PlaywrightWrapper;
     
@@ -12,7 +12,7 @@ export class DashboardPage {
 
     private Elements = {
         acceptAll: 'uc-accept-all-button',
-        perfumeTab: "//a[text()='PARFUM']",
+        headingTabName:(tabName:string) =>`//a[@type='nav-heading' and text()='${tabName}']`
     };
 
     async acceptCookies() {
@@ -33,14 +33,15 @@ export class DashboardPage {
     }
     
 
-    async clickPerfumeTab() {
-        fixture.logger.info("Waiting for the 'Perfume' tab to be visible");
-        await this.page.waitForSelector(this.Elements.perfumeTab, { state: 'visible', timeout: 10000 });
+    async clickHomePageTab(tabName:string) {
+        fixture.logger.info("Waiting for the 'parfum' tab to be visible");
+        await this.page.waitForLoadState("domcontentloaded");
+        await this.page.waitForSelector(this.Elements.headingTabName(tabName), { state: 'visible', timeout: 5000 });
         
-        fixture.logger.info("Clicking the 'Perfume' tab");
-        await this.base.waitAndClick(this.Elements.perfumeTab);
+        fixture.logger.info("Clicking the 'parfum' tab");
+        await this.base.waitAndClick(this.Elements.headingTabName(tabName));
         
-        fixture.logger.info("Navigated to the 'Perfume' section");
+        fixture.logger.info(`Navigated to the ${tabName} page`);
     }
 
     async getDashboardPageTitle() {

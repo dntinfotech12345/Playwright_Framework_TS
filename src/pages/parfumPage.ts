@@ -1,8 +1,8 @@
 import { Page, expect } from "@playwright/test";
 import {PlaywrightWrapper} from "../helper/wrapper/playwrightWrapper";
-import { fixture } from "../../src/hooks/pageFixture";
+import { fixture } from "../hooks/pageFixture";
 
-export class PerfumePage {
+export class ParfumPage {
 
     private base: PlaywrightWrapper;
     
@@ -11,31 +11,32 @@ export class PerfumePage {
     }
 
     private Elements = {
-        perfumePageDropdown: (droupdownOption: string) => `//div[@class='facet__title' and text()= '${droupdownOption}']`,
+        parfumPageDropdown: (dropdownOption: string) => `//div[@class='facet__title' and text()= '${dropdownOption}']`,
         highlightFilterOption: (filterOption: string) => `//div[@class='facet-option__label']//div[text()='${filterOption}']`,
         searchBar: "//input[@data-testid='typeAhead-input']",
         filterTag:(filterTag: string) => `//div[contains(@data-testid,'product-eyecatcher') and text()='${filterTag}']`,
         appliedFilters: "//button[@class='selected-facets__value']",
-        pageInfoLocator:"//div[@data-testid='pagination-title-dropdown']"
+        pageInfoLocator:"//div[@data-testid='pagination-title-dropdown']",
+        nextPageArrow:"//a[@data-testid='pagination-arrow-right']"
     };
 
-    async getPerfumePageTitle() {
-        fixture.logger.info("Waiting for the perfume page to fully load");
+    async getParfumPageTitle() {
+        fixture.logger.info("Waiting for the parfum page to fully load");
         await this.page.waitForLoadState("domcontentloaded");
         
-        fixture.logger.info("Fetching the perfume page title");
+        fixture.logger.info("Fetching the parfum page title");
         const title = await this.page.title();
         
-        fixture.logger.info(`Perfume page title is: ${title}`);
+        fixture.logger.info(`parfum page title is: ${title}`);
         return title;
     }
 
-    async selectPerfumePageDropdown(filterOption: string) {
+    async selectParfumPageDropdown(filterOption: string) {
         fixture.logger.info("Hovering over the search bar to ensure dropdown visibility");
         await this.page.locator(this.Elements.searchBar).hover();
         
         fixture.logger.info(`Selecting dropdown filter option: ${filterOption}`);
-        const dropdownLocator = this.Elements.perfumePageDropdown(filterOption);
+        const dropdownLocator = this.Elements.parfumPageDropdown(filterOption);
         await this.base.waitAndClick(dropdownLocator);
         
         fixture.logger.info(`Dropdown filter option '${filterOption}' selected`);
@@ -52,7 +53,7 @@ export class PerfumePage {
     
     async getTheFilterTextAndVerify(actualFilterText: string) {
         // Get the list of elements
-        await this.page.waitForSelector(this.Elements.appliedFilters, { state: 'visible', timeout: 10000 });
+        await this.page.waitForSelector(this.Elements.appliedFilters, { state: 'visible', timeout: 5000 });
         const filters = await this.page.$$(this.Elements.appliedFilters);
 
         // Extract the text
@@ -85,7 +86,7 @@ export class PerfumePage {
             fixture.logger.info(`Validating filter tag on page ${currentPage} of ${totalPages}`);
             
             // Wait for filter tag to become visible on the current page
-            await this.page.waitForSelector(this.Elements.filterTag(actualFilterText), { state: 'visible', timeout: 30000 });
+            await this.page.waitForSelector(this.Elements.filterTag(actualFilterText), { state: 'visible', timeout: 5000 });
     
             // Extract filter text(s) from the current page
             const filters = await this.page.$$(this.Elements.filterTag(actualFilterText));
@@ -101,7 +102,7 @@ export class PerfumePage {
             // If we are not on the last page, click the "Next" button to go to the next page
             if (currentPage < totalPages) {
                 fixture.logger.info(`Navigating to page ${currentPage + 1}`);
-                const nextPageButton = await this.page.$("//a[@data-testid='pagination-arrow-right']");
+                const nextPageButton = await this.page.$(this.Elements.nextPageArrow);
                 if (nextPageButton) {
                     await nextPageButton.click();
                     await this.page.waitForLoadState('domcontentloaded');
