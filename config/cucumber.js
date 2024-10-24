@@ -1,5 +1,6 @@
 module.exports = {
     default: {
+        defaultTimeout: 300000,
         tags: process.env.npm_config_TAGS || "",
         formatOptions: {
             snippetInterface: "async-await"
@@ -7,7 +8,7 @@ module.exports = {
         paths: [
             "src/test/features/"
         ],
-     
+
         dryRun: false,
         require: [
             "src/test/steps/*.ts",
@@ -28,7 +29,7 @@ module.exports = {
         formatOptions: {
             snippetInterface: "async-await"
         },
-    
+
         dryRun: false,
         require: [
             "src/test/steps/*.ts",

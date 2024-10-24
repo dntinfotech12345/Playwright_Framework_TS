@@ -16,18 +16,18 @@ Given('User navigates to the application', async function () {
   parfumPage =new ParfumPage(fixture.page);
   assert =new Assert(fixture.page);
   await fixture.page.goto(process.env.BASEURL);
-  assert.assertURLContains(data.dashboard.dashboardUrl);
+  assert.assertURLContains(data.homePage.dashboardUrl);
   await homePage.acceptCookies();
 });
 
 When('User click on {string} tab', async function (parfumPage: string) {
-  assert.assertTitleContains(data.dashboard.title);
+  assert.assertTitleContains(data.homePage.title);
   await homePage.clickHomePageTab(parfumPage);
 });
 
 Then('Verify user on the parfum page', async function () {
-  assert.assertURLContains(data.parfum.parfumPageUrl);
-  assert.assertTitle(data.parfum.title);
+  assert.assertURLContains(data.parfumPage.parfumPageUrl);
+  assert.assertTitle(data.parfumPage.title);
 });
 
 When('I select the {string} dropdown', async function (dropDownOption: string) {

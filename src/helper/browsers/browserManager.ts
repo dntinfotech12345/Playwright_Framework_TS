@@ -13,7 +13,7 @@ export const invokeBrowser = () => {
         case "webkit":
             return webkit.launch(options);
         default:
-            throw new Error("Please set the proper browser!")
+            throw new Error("Ensure the correct browser is selected !")
     }
 
 }
