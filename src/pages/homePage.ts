@@ -44,7 +44,7 @@ export class HomePage {
         fixture.logger.info(`Navigated to the ${tabName} page`);
     }
 
-    async getDashboardPageTitle() {
+    async getHomePageTitle() {
         fixture.logger.info("Waiting for the dashboard page to fully load");
         await this.page.waitForLoadState("domcontentloaded");
         
