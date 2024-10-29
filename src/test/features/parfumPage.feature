@@ -5,7 +5,7 @@ Feature: Verify the parfum page
     When User click on "PARFUM" tab
     Then Verify user on the parfum page
     When I select the "Highlights" dropdown
-    Then I select the "Sale" filter option from the dropdown
+    Then I select the "<FilterOption>" filter option from the dropdown
     Then Verify the "<FilterOption>" filter is applied
 
     Examples:
@@ -19,4 +19,4 @@ Feature: Verify the parfum page
     Then Verify user on the parfum page
     When I select the "Highlights" dropdown
     Then I select the "Sale" filter option from the dropdown
-    Then Verify the "NEU" filter is applied
+    Then Verify the "Sale" filter is applied

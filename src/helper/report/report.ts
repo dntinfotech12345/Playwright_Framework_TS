@@ -5,7 +5,7 @@ report.generate({
     reportPath: "test-results/reports/",
     reportName: "Playwright Automation Report",
     pageTitle: "App test report",
-    displayDuration: false,
+    displayDuration: true,
     metadata: {
         browser: {
             name: "chrome",
