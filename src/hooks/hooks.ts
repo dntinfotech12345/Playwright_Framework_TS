@@ -5,6 +5,8 @@ import { invokeBrowser } from "../helper/browsers/browserManager";
 import { getEnv } from "../helper/env/env";
 import { createLogger } from "winston";
 import { options } from "../helper/util/logger";
+import { sendEmailNotification } from "../helper/report/email";
+import path = require("path");
 const fs = require("fs-extra");
 
 let browser: Browser;
@@ -62,4 +64,7 @@ After(async function ({ pickle, result }) {
 
 AfterAll(async function () {
     await browser.close();
+    const videosDir = path.join("D:/playwright/Playwright_Cucumber_TS", 'test-results', 'videos');
+    const reportFilePath = path.join("D:/playwright/Playwright_Cucumber_TS", 'test-results', 'cucumber-report.html');
+    await sendEmailNotification.sendReport(reportFilePath, videosDir);
 })
