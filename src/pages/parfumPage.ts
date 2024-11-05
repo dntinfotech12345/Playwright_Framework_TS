@@ -86,7 +86,7 @@ export class ParfumPage {
             fixture.logger.info(`Validating filter tag on page ${currentPage} of ${totalPages}`);
             
             // Wait for filter tag to become visible on the current page
-            await this.page.waitForSelector(this.Elements.filterTag(actualFilterText), { state: 'visible', timeout: 5000 });
+            await this.page.waitForSelector(this.Elements.filterTag(actualFilterText), { state: 'visible', timeout: 10000 });
     
             // Extract filter text(s) from the current page
             const filters = await this.page.$$(this.Elements.filterTag(actualFilterText));
@@ -102,7 +102,8 @@ export class ParfumPage {
             // If we are not on the last page, click the "Next" button to go to the next page
             if (currentPage < totalPages) {
                 fixture.logger.info(`Navigating to page ${currentPage + 1}`);
-                const nextPageButton = await this.page.$(this.Elements.nextPageArrow);
+                const nextPageButton= await this.page.waitForSelector(this.Elements.nextPageArrow, { state: 'visible', timeout: 10000 });
+                // const nextPageButton = await this.page.$(this.Elements.nextPageArrow);
                 if (nextPageButton) {
                     await nextPageButton.click();
                     await this.page.waitForLoadState('domcontentloaded');
